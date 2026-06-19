@@ -22,25 +22,29 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: Accept Android SDK licenses
+      - name: Accept licenses
         run: yes | sdkmanager --licenses || true
 
-      - name: Install Android SDK components
+      - name: Install SDK
         run: |
-          sdkmanager "platforms;android-33" "build-tools;33.0.2"
+          sdkmanager "platforms;android-33" "build-tools;33.0.2" "platform-tools"
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
         with:
           gradle-version: '8.2'
 
-      - name: Generate Gradle Wrapper
+      - name: Generate wrapper
         run: gradle wrapper
 
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug --no-daemon --stacktrace --info
+      - name: Build APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        env:
+          ANDROID_HOME: /home/runner/Android/Sdk
+          ANDROID_SDK_ROOT: /home/runner/Android/Sdk
 
-      - name: Upload APK artifact
+      - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v5
         with:
           name: tft-auto-debug
