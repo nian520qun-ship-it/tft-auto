@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "TFT-Main";
 
     private TextView tvStatus;
     private TextView tvLog;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btnToggle.setOnClickListener(v -> toggleService());
         btnPerm.setOnClickListener(v -> openPermissions());
 
+        log("应用启动");
         updateStatus();
     }
 
@@ -64,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
         isRunning = !isRunning;
         if (isRunning) {
-            log("✅ 自动化已启动");
-            // 启动悬浮按钮
+            log("▶️ 自动化已启动");
+            log("请切换到金铲铲之战");
             startService(new Intent(this, FloatingButtonService.class));
         } else {
-            log("⏹ 自动化已停止");
+            log("⏸ 自动化已停止");
             stopService(new Intent(this, FloatingButtonService.class));
         }
         updateStatus();
@@ -81,11 +85,14 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder sb = new StringBuilder();
         sb.append("无障碍服务: ").append(accEnabled ? "✅ 已开启" : "❌ 未开启").append("\n");
         sb.append("悬浮窗权限: ").append(overlayEnabled ? "✅ 已授予" : "❌ 未授予").append("\n");
-        sb.append("自动化状态: ").append(isRunning ? "🟢 运行中" : "🔴 已停止").append("\n");
-        sb.append("目标应用: 金铲铲之战");
+        sb.append("自动化: ").append(isRunning ? "🟢 运行中" : "🔴 已停止").append("\n");
+        sb.append("目标: 金铲铲之战 (com.tencent.jkchess)");
         tvStatus.setText(sb.toString());
 
-        btnToggle.setText(isRunning ? "停止自动化" : "启动自动化");
+        btnToggle.setText(isRunning ? "⏸ 停止" : "▶️ 启动");
+
+        // 每次回到界面刷新日志
+        refreshLog();
     }
 
     private void refreshLog() {
@@ -111,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (!Settings.canDrawOverlays(this)) {
             requestOverlayPermission();
         } else {
-            Toast.makeText(this, "所有权限已授予", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "所有权限已授予 ✅", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -127,10 +134,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void log(String msg) {
-        String line = "[" + java.text.SimpleDateFormat.getTimeInstance(java.text.SimpleDateFormat.SHORT)
-                .format(new java.util.Date()) + "] " + msg + "\n";
+        String time = java.text.SimpleDateFormat.getTimeInstance(java.text.SimpleDateFormat.SHORT)
+                .format(new java.util.Date());
+        String line = "[" + time + "] " + msg + "\n";
         logBuffer.append(line);
-        // 限制日志长度
+        Log.i(TAG, msg);
         if (logBuffer.length() > 5000) {
             logBuffer.delete(0, logBuffer.length() - 5000);
         }
