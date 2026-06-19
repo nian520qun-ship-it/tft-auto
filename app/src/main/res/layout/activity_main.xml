@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1a1a2e"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- 标题 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚔️ 金铲铲自动"
+            android:textSize="28sp"
+            android:textColor="#e94560"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全自动挂机助手"
+            android:textSize="14sp"
+            android:textColor="#8888aa"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 状态卡片 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📊 状态"
+                android:textSize="16sp"
+                android:textColor="#e94560"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载中..."
+                android:textSize="14sp"
+                android:textColor="#ccccdd"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- 功能说明 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📋 功能"
+                android:textSize="16sp"
+                android:textColor="#e94560"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="✅ 自动开始对局\n✅ 自动购买商店卡牌\n✅ 自动刷新商店\n✅ 自动购买经验\n✅ 自动将棋子放到棋盘\n✅ 对局结束自动下一局\n✅ 弹窗自动确认"
+                android:textSize="13sp"
+                android:textColor="#ccccdd"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- 日志 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📝 运行日志"
+                android:textSize="16sp"
+                android:textColor="#e94560"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <ScrollView
+                android:id="@+id/scroll_log"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#111122"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tv_log"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="等待启动..."
+                    android:textSize="12sp"
+                    android:textColor="#88cc88"
+                    android:fontFamily="monospace"
+                    android:lineSpacingExtra="2dp" />
+            </ScrollView>
+        </LinearLayout>
+
+        <!-- 按钮 -->
+        <Button
+            android:id="@+id/btn_permissions"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="🔧 授权设置"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_secondary"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btn_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="▶️ 启动自动化"
+            android:textSize="17sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:background="@drawable/btn_primary"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 使用说明 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💡 使用说明：\n1. 点击「授权设置」开启无障碍服务和悬浮窗\n2. 打开金铲铲之战进入大厅\n3. 回到本应用点击「启动自动化」\n4. 绿色悬浮球 = 运行中，点击可暂停\n5. 红色悬浮球 = 已暂停，点击可恢复\n\n⚠️ 悬浮球可拖拽到任意位置"
+            android:textSize="12sp"
+            android:textColor="#666688"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="32dp" />
+
+    </LinearLayout>
+</ScrollView>

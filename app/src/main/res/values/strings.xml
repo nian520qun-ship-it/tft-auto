@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">金铲铲自动</string>
+    <string name="accessibility_desc">金铲铲之战自动化辅助服务，用于自动开始对局、购买卡牌、放置棋子等操作。</string>
+</resources>

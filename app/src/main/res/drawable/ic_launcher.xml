@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- 背景圆 -->
+    <path
+        android:fillColor="#e94560"
+        android:pathData="M24,24m-22,0a22,22 0,1 1,44 0a22,22 0,1 1,-44 0" />
+    <!-- 剑图标 -->
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M24,10 L26,10 L26,20 L30,20 L30,22 L18,22 L18,20 L22,20 L22,10 Z M20,22 L20,32 L22,32 L22,22 Z M26,22 L26,32 L28,32 L28,22 Z M22,32 L22,36 L26,36 L26,32 Z" />
+</vector>
