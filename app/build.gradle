@@ -1,6 +1,4 @@
-plugins {
-    id 'com.android.application' version '8.2.0' apply true
-}
+apply plugin: 'com.android.application'
 
 android {
     namespace 'com.tft.auto'
