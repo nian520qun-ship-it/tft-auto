@@ -5,8 +5,6 @@
     android:accessibilityFlags="flagDefault|flagIncludeNotImportantViews|flagReportViewIds|flagRequestFilterKeyEvents"
     android:canRetrieveWindowContent="true"
     android:canPerformGestures="true"
-    android:canTakeScreenshot="false"
     android:notificationTimeout="100"
-    android:packageNames="com.tencent.jkchess"
     android:description="@string/accessibility_desc"
     android:settingsActivity="com.tft.auto.MainActivity" />
