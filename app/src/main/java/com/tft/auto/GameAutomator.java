@@ -136,9 +136,9 @@ public class GameAutomator {
     private void handleLobby() {
         Log.i(TAG, "handleLobby: trying to start game");
         MainActivity.log("🎯 大厅 - 开始游戏");
-        boolean clicked = service.clickNodeByText("开始游戏");
+        boolean clicked = service.clickText("开始游戏");
         if (!clicked) {
-            clicked = service.clickNodeByText("开始匹配");
+            clicked = service.clickText("开始匹配");
         }
         if (!clicked) {
             service.performClick(LOBBY_START_X, LOBBY_START_Y);
@@ -205,7 +205,7 @@ public class GameAutomator {
             final float by = boardY;
 
             handler.postDelayed(() -> {
-                service.performLongClick(BENCH_X[bi], BENCH_Y, bx, by, 500);
+                service.performDrag(BENCH_X[bi], BENCH_Y, bx, by, 500);
                 MainActivity.log("♟️ 放棋 [" + row + "," + col + "]");
             }, (long) i * LONG_ACTION_DELAY);
 
@@ -223,9 +223,9 @@ public class GameAutomator {
         Log.i(TAG, "handleGameEnd: starting next game");
         MainActivity.log("🏆 对局结束 - 下一局");
 
-        boolean clicked = service.clickNodeByText("再来一局");
-        if (!clicked) clicked = service.clickNodeByText("play again");
-        if (!clicked) clicked = service.clickNodeByText("返回大厅");
+        boolean clicked = service.clickText("再来一局");
+        if (!clicked) clicked = service.clickText("play again");
+        if (!clicked) clicked = service.clickText("返回大厅");
         if (!clicked) service.performClick(PLAY_AGAIN_X, PLAY_AGAIN_Y);
 
         benchIndex = 0;
@@ -238,9 +238,9 @@ public class GameAutomator {
         Log.i(TAG, "handlePopup: dismissing");
         MainActivity.log("💬 关闭弹窗");
 
-        boolean clicked = service.clickNodeByText("确定");
-        if (!clicked) clicked = service.clickNodeByText("确认");
-        if (!clicked) clicked = service.clickNodeByText("知道了");
+        boolean clicked = service.clickText("确定");
+        if (!clicked) clicked = service.clickText("确认");
+        if (!clicked) clicked = service.clickText("知道了");
         if (!clicked) service.performClick(POPUP_CONFIRM_X, POPUP_CONFIRM_Y);
     }
 }
