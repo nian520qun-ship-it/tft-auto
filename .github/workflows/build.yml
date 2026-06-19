@@ -29,6 +29,9 @@ jobs:
         run: |
           sdkmanager "platforms;android-33" "build-tools;33.0.2" "platform-tools"
 
+      - name: Write local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
         with:
@@ -39,9 +42,6 @@ jobs:
 
       - name: Build APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
-        env:
-          ANDROID_HOME: /home/runner/Android/Sdk
-          ANDROID_SDK_ROOT: /home/runner/Android/Sdk
 
       - name: Upload APK
         if: success()
